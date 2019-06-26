@@ -1,8 +1,8 @@
 # pdf
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg)](#contributors)
-[![Hits-of-Code](https://hitsofcode.com/github/cuongw/react-boilerplate)](https://hitsofcode.com/view/github/cuongw/react-boilerplate)
-[![GitHub](https://img.shields.io/github/license/cuongw/react-boilerplate.svg)](https://github.com/cuongw/react-boilerplate/blob/master/LICENSE)
+[![Hits-of-Code](https://hitsofcode.com/github/cuongw/pdf)](https://hitsofcode.com/view/github/cuongw/pdf)
+[![GitHub](https://img.shields.io/github/license/cuongw/pdf.svg)](https://github.com/cuongw/pdf/blob/master/LICENSE)
 
 > ☀️📄 Handle PDF file with React and Node.
 
