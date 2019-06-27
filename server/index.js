@@ -10,10 +10,20 @@ app.use(cors());
 app.get('/', (req, res) => res.send('<h3>👋 Hello</h3>'));
 app.get('/api', (req, res) => {
   const html = fs.readFileSync('./index.html', 'utf8');
-  pdf.create(html).toBuffer(function(err, buffer) {
+  const options = {
+    header: {
+      height: '20mm',
+      contents: '<div/>'
+    },
+    footer: {
+      height: '20mm',
+      contents: '<div style="text-align: center; font-size: 10px; color: #1890fe">Save Money Corporation</div>'
+    },
+    format: 'A4',
+  }
+  pdf.create(html, options).toBuffer((err, buffer) => {
     res.set({
       'Content-Type': 'application/pdf',
-      'Content-Length': pdf.length
     });
     res.send(buffer);
   });
