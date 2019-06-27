@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
@@ -16,7 +16,7 @@ function App() {
         }
       })
       .then(response => setData(response.data))
-      .catch(_ => setData({}));
+      .catch(_ => setData([]));
   }, []);
 
   function handleClick() {

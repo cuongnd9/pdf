@@ -1,32 +1,30 @@
 const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
-const pdf = require('html-pdf');
+const puppeteer = require('puppeteer');
 
 const app = express();
 
 app.use(cors());
 
 app.get('/', (req, res) => res.send('<h3>👋 Hello</h3>'));
-app.get('/api', (req, res) => {
-  const html = fs.readFileSync('./index.html', 'utf8');
-  const options = {
-    header: {
-      height: '20mm',
-      contents: '<div/>'
-    },
-    footer: {
-      height: '20mm',
-      contents: '<div style="text-align: center; font-size: 10px; color: #1890fe">Save Money Corporation</div>'
-    },
-    format: 'A4',
-  }
-  pdf.create(html, options).toBuffer((err, buffer) => {
-    res.set({
-      'Content-Type': 'application/pdf',
-    });
-    res.send(buffer);
-  });
+app.get('/api', async (req, res) => {
+  const content = fs.readFileSync('./index.html', 'utf8');
+  const browser = await puppeteer.launch({ headless: true })
+  const page = await browser.newPage()
+  await page.setContent(content)
+  const buffer = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      margin: {
+          left: '0px',
+          top: '0px',
+          right: '0px',
+          bottom: '0px'
+      }
+  })
+          await browser.close()
+  res.end(buffer)
 });
 
 app.listen(6969, () => {
