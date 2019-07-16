@@ -24,10 +24,6 @@ app.get('/api', async (req, res) => {
       }
   })
   await browser.close()
-  console.log('buffer to string ---------------', buffer.toString('base64'))
-  // res.set('Content-Type', 'application/pdf; charset=utf-8');
-  console.log(res.get('Content-Type'), '----------------------------');
-  // res.send(buffer)
   res.json(buffer.toString('base64'))
 });
 

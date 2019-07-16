@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { saveAs } from 'file-saver';
-import axios from 'axios';
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -9,15 +7,6 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // axios
-    //   .get('http://localhost:6969/api', {
-    //     responseType: 'arraybuffer',
-    //     headers: {
-    //       Accept: 'application/pdf'
-    //     }
-    //   })
-    //   .then(response => setData(response.data))
-    //   .catch(_ => setData([]));
     fetch('http://localhost:6969/api')
     .then(res => res.json())
     .then(blob => setData(blob))
@@ -52,7 +41,6 @@ function App() {
     link.href = window.URL.createObjectURL(blob);
     link.download = `certificate.pdf`;
     link.click();
-    // saveAs(blob, '777.pdf');
   }
 
   return (
