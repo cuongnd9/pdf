@@ -24,7 +24,7 @@ app.get('/api', async (req, res) => {
       }
   })
   await browser.close()
-  res.json(buffer.toString('base64'))
+  res.send(buffer);
 });
 
 app.listen(6969, () => {
